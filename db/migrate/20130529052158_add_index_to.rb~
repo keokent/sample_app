@@ -1,5 +1,0 @@
-class AddIndexTo < ActiveRecord::Migration
-  def change
-    add_intdex :users, :email, unique: true
-  end
-end
