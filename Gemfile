@@ -10,7 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 
 
 group :development, :test do
- gem 'sqlite3','1.3.7'
+ gem 'mysql2'
  gem 'rspec-rails','2.13.1'
 end
 
@@ -30,7 +30,8 @@ end
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'execjs'
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '2.2.1'
@@ -42,7 +43,7 @@ gem 'turbolinks', '1.0.0'
 gem 'jbuilder', '~> 1.0.1'
 
 group :production do
- gem 'pg', '0.14.1'
+ gem 'mysql2'
 end
 
 group :doc do
@@ -53,7 +54,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
