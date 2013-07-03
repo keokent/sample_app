@@ -25,6 +25,6 @@ production:
   pool: 5
   timeout: 5000
   username: keoken
-  password: tanuki1102
+  password: passwd
 cucumber:
   <<: *test
