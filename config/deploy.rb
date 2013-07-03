@@ -1,14 +1,19 @@
 set :application, "sample_app"
 set :repository,  "https://github.com/keokent/sample_app.git"
-set :user, ""
+set :user, "appuser"
 ssh_options[:keys] = "~/.ssh/id_rsa"
 set :scm, "git"
 set :branch, :master
-set :deploy_to, "/tmp/keoken"
+set :deploy_to, "/home/appuser"
+set :use_sudo, false
+set :shared_children, %w(log pids system run)
+
 role :web, "app001.keoken.pb"         # Your HTTP server, Apache/etc
 role :app, "app001.keoken.pb"         # This may be the same as your `Web` server
 role :db,  "app001.keoken.pb", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
+
+
 
 task :clone_app do
   run "git clone https://github.com/keokent/sample_app.git /tmp/sample_app"
