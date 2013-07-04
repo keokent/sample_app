@@ -7,6 +7,7 @@ set :branch, :master
 set :deploy_to, "/home/appuser/rails"
 set :use_sudo, false
 set :shared_children, %w(log pids system run)
+set :rails_env, "production"
 
 role :web, "app002.keoken.pb"         # Your HTTP server, Apache/etc
 role :app, "app002.keoken.pb"         # This may be the same as your `Web` server

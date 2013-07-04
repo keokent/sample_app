@@ -43,7 +43,7 @@ gem 'turbolinks', '1.0.0'
 gem 'jbuilder', '~> 1.0.1'
 
 group :production do
- gem 'mysql2'
+  gem 'mysql2'
 end
 
 group :doc do
