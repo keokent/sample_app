@@ -63,3 +63,4 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 gem 'capistrano'
+gem 'dalli'
