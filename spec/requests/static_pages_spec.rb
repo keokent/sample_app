@@ -49,17 +49,17 @@ describe "Static pages" do
           end
         end
       end
-        
+      
       describe "have a micropost" do
         before do
           FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
           sign_in user
           visit root_path
         end
-          
+        
         it { should have_content(/1 micropost[^s]/) }
       end
-
+      
       describe "have two microposts" do
         before do
           FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
@@ -68,9 +68,8 @@ describe "Static pages" do
           visit root_path
         end
         
-        it { should have_content("2 microposts")
-        
-     
+        it { should have_content("2 microposts") }
+      end
     end
 
     describe "for signed-in users" do
@@ -81,26 +80,26 @@ describe "Static pages" do
         sign_in user
         visit root_path
       end
-
+      
       it "should render the user's feed" do
         user.feed.each do |item|
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
-
+      
       describe "follower/following counts" do
         let(:other_user) { FactoryGirl.create(:user) }
         before do
           other_user.follow!(user)
           visit root_path
         end
-
+        
         it { should have_link("0 following", href: following_user_path(user)) }
         it { should have_link("1 followers", href: followers_user_path(user)) }
       end
     end
   end
-
+  
   describe "Help page" do
     before { visit help_path }
     let(:heading) {'Help'}
@@ -108,12 +107,12 @@ describe "Static pages" do
     
     it_should_behave_like "all static pages"
   end
-
+  
   describe "About page" do
     before { visit about_path }
     let(:heading) {'About'}
     let(:page_title) {'About Us'}
-
+    
     it_should_behave_like "all static pages"
   end
   
@@ -121,7 +120,7 @@ describe "Static pages" do
     before {visit contact_path}
     let(:heading) {'Contact'}
     let(:page_title) {'Contact'}
-
+    
     it_should_behave_like "all static pages"
   end
 end
