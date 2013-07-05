@@ -43,5 +43,4 @@ end
 
 
 before :deploy, "deploy:setup"
-after :deploy, "deploy:migrate"
 after :deploy, "deploy:upgrade_unicorn"
