@@ -9,9 +9,10 @@ set :use_sudo, false
 set :shared_children, %w(log pids system run)
 set :rails_env, "production"
 
-role :web, "app002.keoken.pb"         # Your HTTP server, Apache/etc
-role :app, "app002.keoken.pb"         # This may be the same as your `Web` server
-role :db,  "app002.keoken.pb", :primary => true # This is where Rails migrations will run
+
+role :web, "app003.keoken.pb"         # Your HTTP server, Apache/etc
+role :app, "app003.keoken.pb"         # This may be the same as your `Web` server
+role :db,  "app003.keoken.pb", :primary => true # This is where Rails migrations will run
 
 
 namespace :deploy do
@@ -26,4 +27,21 @@ namespace :deploy do
   end
 end
 
+namespace :database do
+  desc "populate"
+  task :populate do
+    run "cd #{deploy_to} && bundle exec rake db:populate"
+  end
+end
+
+namespace :assets do
+  desc "assets precompile"
+  task :precompile do
+    run "cd #{deploy_to} && bundle exec rake assets:precompile"
+  end
+end
+
+
+before :deploy, "deploy:setup"
+after :deploy, "deploy:migrate"
 after :deploy, "deploy:upgrade_unicorn"
