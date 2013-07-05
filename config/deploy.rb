@@ -19,6 +19,11 @@ namespace :deploy do
   task :restart_unicorn do
     run "/etc/init.d/unicorn_sample_app restart"
   end
+
+  desc "upgrade unicorn"
+  task :upgrade_unicorn do
+    run "/etc/init.d/unicorn_sample_app upgrade"
+  end
 end
 
-after :deploy, "deploy:restart_unicorn"
+after :deploy, "deploy:upgrade_unicorn"
