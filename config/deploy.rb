@@ -23,21 +23,21 @@ namespace :deploy do
 
   desc "upgrade unicorn"
   task :upgrade_unicorn do
-    run "/etc/init.d/unicorn_sample_app upgrade"
+    run "sudo /etc/init.d/unicorn_sample_app upgrade"
   end
 end
 
 namespace :database do
   desc "populate"
   task :populate do
-    run "cd #{deploy_to} && bundle exec rake db:populate"
+    run "cd #{current_path} && bundle exec rake db:populate"
   end
 end
 
 namespace :assets do
   desc "assets precompile"
   task :precompile do
-    run "cd #{deploy_to} && bundle exec rake assets:precompile"
+    run "cd #{current_path} && bundle exec rake assets:precompile RAILS_ENV=#{rails_env}"
   end
 end
 
