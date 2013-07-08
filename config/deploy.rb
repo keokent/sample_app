@@ -10,9 +10,9 @@ set :shared_children, %w(log pids system run)
 set :rails_env, "production"
 
 
-role :web, "app003.keoken.pb"         # Your HTTP server, Apache/etc
-role :app, "app003.keoken.pb"         # This may be the same as your `Web` server
-role :db,  "app003.keoken.pb", :primary => true # This is where Rails migrations will run
+role :web, "app001.keoken.pb"   
+role :app, "app001.keoken.pb"   
+role :db,  "app001.keoken.pb", :primary => true
 
 
 namespace :deploy do
