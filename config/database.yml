@@ -24,7 +24,7 @@ production:
   database: sample_app_production
   pool: 5
   timeout: 5000
+  host:db001.keoken.pb
+  port: 3306
   username: keoken
   password: passwd
-cucumber:
-  <<: *test
