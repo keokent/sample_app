@@ -1,7 +1,10 @@
 module SessionsHelper
 
   def sign_in(user)
-    cookies.permanent[:remember_token] = user.remember_token
+    cookies.permanent[:remember_token] = { 
+      value: user.remember_token,
+      domain: '.keoken.pb'
+    }
     self.current_user = user
   end
 
@@ -30,7 +33,7 @@ module SessionsHelper
   
   def sign_out
     self.current_user = nil
-    cookies.delete(:remember_token)
+    cookies.delete(:remember_token, domain: '.keoken.pb')
   end
 
   def redirect_back_or(default)
