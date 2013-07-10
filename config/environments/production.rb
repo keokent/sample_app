@@ -78,5 +78,5 @@ SampleApp::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, 'app001.keoken.pb'
 end
