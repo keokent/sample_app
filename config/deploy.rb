@@ -10,9 +10,9 @@ set :shared_children, %w(log pids system run)
 set :rails_env, "production"
 
 
-role :web, "app001.keoken.pb"   
-role :app, "app001.keoken.pb"   
-role :db,  "app001.keoken.pb", :primary => true
+role :web, "app001.keoken.pb", "app002.keoken.pb"   
+role :app, "app001.keoken.pb", "app002.keoken.pb"   
+role :db,  "app001.keoken.pb", "app002.keoken.pb", :primary => true
 
 
 namespace :deploy do
